@@ -25,6 +25,10 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'recipe_category' => 'required',
+        ]);
+
         return Categories::create($request->all());
     }
 
