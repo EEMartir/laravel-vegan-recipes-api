@@ -1,7 +1,11 @@
 <?php
+
+// Check the controllers path
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\AuthController;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('categories', CategoriesController::class); // Incluye todas las rutas api de una operacion CRUD
 
 // Public Routes
-
 Route::get('categories', [CategoriesController::class, 'index']); // Incluye todas las rutas api de una operacion CRUD
 Route::get('/categories/search/{recipe_category}', [CategoriesController::class, 'search']); // buscar un dato
 Route::get('/categories/{id}', [CategoriesController::class, 'show']); // mostrar un dato
