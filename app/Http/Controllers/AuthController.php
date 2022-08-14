@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 // Add this path. 
-use Illuminate\Support\Facades\Hash; // check this path!!
+use Illuminate\Support\Facades\Hash; // Bring this path to use bcrypt
 
 
 class AuthController extends Controller
@@ -47,12 +48,15 @@ class AuthController extends Controller
            $user = User::where('email', $fields['email'])->first();
 
            // Check password
-              if(!$user || !Hash::check($fields['password'], $user->password)){
+              if(!$user || !Hash::check($fields['password'], $user->password)){ 
+                //if no matcn in user and no match with the user password
                 return response([
                     'message' => 'invalid credentials'
                 ], 401);
-            }
 
+            }
+            //If credentials pass, this will pass onto the api: 
+            
             $token = $user->createToken('myapptoken')->plainTextToken; 
 
             $response = [

@@ -26,6 +26,7 @@ class RecipesController extends Controller
     public function store(Request $request)
 
     {
+        
         return Recipes::create($request->all());
     }
 
