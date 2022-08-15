@@ -26,7 +26,15 @@ class RecipesController extends Controller
     public function store(Request $request)
 
     {
-        
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'ingredients' => 'required',
+            'cookTime' => 'required',
+            'instructions' => 'required',
+            'image_file' => 'required',
+            'category_id' => 'required',
+        ]);
         return Recipes::create($request->all());
     }
 
